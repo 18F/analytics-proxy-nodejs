@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.org/18F/analytics-reporter.png)](https://travis-ci.org/18F/analytics-reporter)  [![Dependency Status](https://gemnasium.com/badges/github.com/18F/analytics-reporter.svg)](https://gemnasium.com/github.com/18F/analytics-reporter)
+[![Build Status](https://travis-ci.org/18F/analytics-reporter.png)](https://travis-ci.org/18F/analytics-reporter)  [![Dependency Status](https://gemnasium.com/badges/github.com/18F/analytics-reporter.svg)](https://gemnasium.com/github.com/18F/analytics-reporter) [![](https://images.microbadger.com/badges/version/18fgsa/analytics-reporter:v1.2.2.svg)](https://microbadger.com/images/18fgsa/analytics-reporter:v1.2.2) [![](https://images.microbadger.com/badges/image/18fgsa/analytics-reporter:v1.2.2.svg)](https://microbadger.com/images/18fgsa/analytics-reporter:v1.2.2)
+
+
 
 ## Analytics Reporter
 
@@ -18,13 +20,19 @@ Available reports are named and described in [`reports.json`](reports/reports.js
 ````bash
 export NODE_ENV=development # just needed when developing against the image
 export NODE_ENV=production # to build an image for production
-docker build --build-arg NODE_ENV=${NODE_ENV} -t analytics-reporter .
+docker build --build-arg NODE_ENV=${NODE_ENV} -t 18fgsa/analytics-reporter .
 ````
+
+Or you can use the docker hub built image:
+
+```bash
+docker pull 18fgsa/analytics-reporter
+```
 
 Then you can create an alias in order to have the analytics command available:
 
 ```bash
-alias analytics="docker run -t -v ${HOME}:${HOME} -e ANALYTICS_REPORT_EMAIL -e ANALYTICS_REPORT_IDS -e ANALYTICS_KEY analytics-reporter"
+alias analytics="docker run -t -v ${HOME}:${HOME} -e ANALYTICS_REPORT_EMAIL -e ANALYTICS_REPORT_IDS -e ANALYTICS_KEY 18fgsa/analytics-reporter"
 ```
 
 To make this command working as expected you should export the env vars as follows:
